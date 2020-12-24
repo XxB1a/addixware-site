@@ -1,0 +1,115 @@
+<main>
+    <section class="section section-lg bg-gradient-default pb-250">
+
+        <div class="container py-lg-md d-flex">
+            <div class="col px-0">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h1 class="display-3  text-white">Rejoignez nous</h1>
+                        <p class="lead  text-white text-justify">
+                            Vous trouverez ici nos différentes offres d'emplois. Rejoignez l'aventure addixware et
+                            <a target="_blank" class="btn-link" href="http://addixware.fr/livre_blanc_entretien.pdf">téléchargez</a>
+                            notre livre blanc sur la préparation à un entretiens clients
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="separator separator-bottom separator-skew">
+            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
+                 xmlns="http://www.w3.org/2000/svg">
+                <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+            </svg>
+        </div>
+
+    </section>
+
+    <section class="section section-lg pt-lg-0 mt--200">
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="col-lg-12 badge-container">
+                    <span (click)="setTechno(techno)"
+                          *ngFor="let techno of technos | async"
+                          class="badge badge-pill badge-primary">
+                        {{techno.name}}
+                    </span>
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="form-group">
+                        <div class="input-group input-group-alternative">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                            </div>
+                            <input class="form-control"
+                                   [formControl]="search"
+                                   placeholder="Tapez votre recherche"
+                                   type="text">
+                            <div class="input-group-append"
+                                 (click)="removeTerm()">
+                                <span class="input-group-text"><i class="ni ni-fat-remove"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <div class="form-group mb-5">
+                        <div class="input-group input-group-alternative">
+                            <select class="form-control"
+                                    [formControl]="agence"
+                                    placeholder="Votre nom">
+                                <option disabled selected>Par lieu</option>
+                                <option value="sophia">Sophia antipolis</option>
+                                <option value="aix-en-provence">Aix en provence</option>
+                                <option value="paris">Paris</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <div class="form-group mb-5">
+                        <div class="input-group input-group-alternative">
+                            <select class="form-control"
+                                    [formControl]="post"
+                                    placeholder="Votre nom">
+                                <option disabled selected>Par poste</option>
+                                <option value="">Front-end</option>
+                                <option value="">Back-end</option>
+                                <option value="">Analyste</option>
+                                <option value="">Chef de projet</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+
+                    <div class="row row-grid">
+
+                        <div class="col-lg-4" *ngFor="let offer of offers | async | paginate: { id: 'offer_paginate', itemsPerPage: offersService.limit, currentPage: offersService.page, totalItems: metadata.item_count}">
+                            <app-offer-card
+                                    [technos]="offer.technos"
+                                    [icon]="'tv-2'"
+                                    [title]="offer.title"
+                                    [state]="'primary'"
+                                    [group]="offer.group"
+                                    [salary]="offer.salary + '€'"
+                                    [content]="offer.content">
+                            </app-offer-card>
+                        </div>
+
+                    </div>
+
+                    <pagination-controls (pageChange)="offersService.page = $event" id="offer_paginate"></pagination-controls>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

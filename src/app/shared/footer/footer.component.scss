@@ -1,0 +1,14 @@
+.card-img {
+  height: 320px;
+  border-radius: 4px;
+}
+
+.text-img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%);
+  font-size: 30px;
+  color: #fff;
+  text-transform: uppercase;
+}

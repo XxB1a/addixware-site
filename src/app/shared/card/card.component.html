@@ -1,0 +1,18 @@
+<div class="card card-lift--hover shadow border-0">
+  <div class="card-body py-5 text-justify">
+
+    <div class="icon icon-shape icon-shape-{{state}} rounded-circle mb-4">
+      <i class="ni ni-{{icon}}"></i>
+    </div>
+
+    <h6 class="text-{{state}} text-uppercase">{{title}}</h6>
+    <p class="description mt-3">{{description}}</p>
+
+    <div>
+      <p class="agence">{{agence}}</p>
+      <span *ngFor="let item of technos" class="badge badge-pill badge-{{state}}">{{item}}</span>
+    </div>
+
+  </div>
+</div>
+

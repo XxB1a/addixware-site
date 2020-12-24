@@ -1,0 +1,56 @@
+<main>
+
+    <section class="section section-lg bg-gradient-default pb-250">
+
+        <div class="container py-lg-md d-flex">
+            <div class="col px-0">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h1 class="display-3  text-white">Vivre le service IT autrement</h1>
+                        <p class="lead  text-white text-justify">
+                            AddixWare place l'épanouissement et l'evolution de ses collaborateurs au centre des
+                            attentions et du système de l'entreprise.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="separator separator-bottom separator-skew">
+            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
+                 xmlns="http://www.w3.org/2000/svg">
+                <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+            </svg>
+        </div>
+
+    </section>
+
+    <section class="section section-lg pt-lg-0 mt--200">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="row row-grid">
+
+                        <div class="col-lg-4" *ngFor="let card of cards">
+                            <app-card
+                                    [technos]="card.technos"
+                                    [icon]="card.icon"
+                                    [title]="card.title"
+                                    [state]="card.state"
+                                    [description]="card.description">
+                            </app-card>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <app-services></app-services>
+
+    <app-philo></app-philo>
+
+    <app-contact></app-contact>
+
+</main>
